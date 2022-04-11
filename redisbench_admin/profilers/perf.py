@@ -288,7 +288,7 @@ class Perf:
                     try:
                         subprocess.Popen(args=args, stdout=outfile).wait()
                     except OSError as e:
-                        args_str = " ".join(args)
+                        args_str = " ".join([str(x) for x in args])
                         self.logger.error(
                             "Unable to run {} script with args {}. Error: {}".format(
                                 self.perf, args_str, e.__str__()
@@ -305,7 +305,7 @@ class Perf:
                             "-i",
                             self.output,
                         ]
-                        args_str = " ".join(args)
+                        args_str = " ".join([str(x) for x in args])
                         try:
                             subprocess.Popen(args=args, stdout=outfile).wait()
                             self.trace_file_main_thread = filename_main_thread
