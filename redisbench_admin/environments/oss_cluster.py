@@ -147,6 +147,7 @@ def generate_cluster_redis_server_args(
     daemonize="yes",
     modules_configuration_parameters_map={},
     logname_prefix=None,
+    enable_debug_command="no",
 ):
     if logname_prefix is None:
         logname_prefix = ""
@@ -182,6 +183,8 @@ def generate_cluster_redis_server_args(
             "{}".format(port),
             "--dir",
             dbdir,
+            "--enable-debug-command",
+            enable_debug_command,
         ]
     )
     if configuration_parameters is not None:

@@ -49,6 +49,7 @@ def generate_standalone_redis_server_args(
     port,
     configuration_parameters=None,
     modules_configuration_parameters_map={},
+    enable_debug_command="no",
 ):
     if type(binary) == list:
         command = binary
@@ -63,6 +64,8 @@ def generate_standalone_redis_server_args(
             "{}".format(port),
             "--dir",
             dbdir,
+            "--enable-debug-command",
+            enable_debug_command,
         ]
     )
     if configuration_parameters is not None:
